@@ -1,9 +1,9 @@
 const theme={
-    background:"#060F29",
-    light:{
-        surface:"#EBEBEB",
-        primary:"#EE3F7C",
-        shadow:"#EE3F7C",
+    Background:"#060F29",
+    Light:{
+        Surface:"#EBEBEB",
+        Primary:"#EE3F7C",
+        Shadow:"#EE3F7C",
     },
 }
 
