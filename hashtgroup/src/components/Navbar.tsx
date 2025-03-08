@@ -29,7 +29,7 @@ const Navbar = () => {
                        background: `background: linear-gradient(270deg, rgba(6, 15, 41, 0.6) 0%, rgba(6, 15, 41, 0) 49.5%, rgba(6, 15, 41, 0.6) 100%), url(blue-purple-brick-wall-textured-background.jpg);
         opacity: 0.4;`
                    }}>
-        <div className="flex flex-row justify-around w-3/5">
+        <div className="flex flex-row justify-around w-2/5">
             {menuItems.map(({path, label, key}) => {
                 const isActive = activeSection === path
                 return <div key={key}>
