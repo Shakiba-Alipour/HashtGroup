@@ -7,7 +7,6 @@ const theme = {
             Shadow: "#EE3F7C",
         },
         Secondary: {
-            Background: "#FFFFFF33",
             Text: "#F3F3F3"
         },
         Button:"#1387EC3D"
