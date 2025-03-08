@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Description from "./components/Description";
 import Game from "./components/Game";
 import Invitation from "./components/Invitation";
+import Leaderboard from "./components/Leaderboard";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
             <Description/>
             <Game/>
             <Invitation code="A-21052"/>
+            <Leaderboard/>
         </div>
     );
 }
