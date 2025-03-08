@@ -15,10 +15,9 @@ const Invitation = ({code}: { code: string }) => {
     //     });
     // };
 
-    return <div
-        className="!w-full bg-Background text-Light-Surface">
+    return <div className="!w-full bg-Background text-Light-Surface content-center">
         <div
-            className="border-Secondary-Background rounded-md w-10/12 flex lg:flex-row md:flex-row sm:flex-col-reverse !justify-evenly !content-center">
+            className="border-Secondary-Text rounded-md h-5/6 w-10/12 flex lg:flex-row md:flex-row sm:flex-col-reverse !justify-evenly justify-self-center">
             <div
                 className="flex flex-col justify-items-start justify-between content-start text-right w-3/5 gap-y-5 self-center">
                 <h2 className="font-bold text-xl">هر دعوت 1000 سکه برای شما!!</h2>
