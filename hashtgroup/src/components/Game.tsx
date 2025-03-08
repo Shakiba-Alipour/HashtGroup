@@ -4,7 +4,7 @@ import SilverPrize from "../assets/boxes/SilverPrize";
 import GoldPrize from "../assets/boxes/GoldPrize";
 
 const Game = () => {
-  return <div className="mt-16 mb-16">
+  return <div className="mt-16 mb-16" id="game">
       <h1 className="font-extrabold text-2xl">جوایز خود را انتخاب کنید</h1>
       <p>این یک بازیه مخصوص شما دانش‌آموزان سخت‌کوش که می‌تونید با باز کردن هر صندوق و پاسخ مرتبط امتیاز مورد نیاز خود را کسب کنید.</p>
       <div className="flex flex-row w-4/5 justify-between justify-self-center">

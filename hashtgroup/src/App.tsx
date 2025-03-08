@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Description from "./components/Description";
 import Game from "./components/Game";
 import Invitation from "./components/Invitation";
-import Leaderboard from "./components/Leaderboard";
+import Leaderboard from "./components/leaderboard/Leaderboard";
 import Footer from "./components/Footer";
 
 function App() {

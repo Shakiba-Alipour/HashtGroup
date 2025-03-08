@@ -22,6 +22,13 @@ const Navbar = () => {
         {path: "leaderboard", label: "لیدربورد", key: "leaderboard"}
     ]
 
+    const handleScroll = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({behavior: "smooth"});
+        }
+    };
+
     // useEffect({},[])
 
     return <header
@@ -30,16 +37,16 @@ const Navbar = () => {
             background: `background: linear-gradient(270deg, rgba(6, 15, 41, 0.6) 0%, rgba(6, 15, 41, 0) 49.5%, rgba(6, 15, 41, 0.6) 100%), url(blue-purple-brick-wall-textured-background.jpg);
         opacity: 0.4;`
         }}>
-        <div className="flex flex-row justify-around w-2/5 flex-wrap align-middle">
+        <ul className="flex flex-row justify-around w-2/5 flex-wrap align-middle">
             {menuItems.map(({path, label, key}) => {
                 const isActive = activeSection === path
-                return <div key={key} className="flex flex-col align-middle">
-                    <a href={path}>{label}</a>
+                return <div key={key} className="flex flex-col align-middle cursor-pointer" onClick={() => handleScroll(path)}>
+                    <li id={path}>{label}</li>
                     {isActive && <span
-                        className="absolute bg-Light-Primary shadow-Light-Shadow w-2 h-2 rounded-full top-[10px]"/>}
+                        className="absolute bg-Light-Primary shadow-Light-Shadow w-2 h-2 rounded-full top-[45px] self-center"/>}
                 </div>
             })}
-        </div>
+        </ul>
         {isMobile ? <Logo/> : <MainLogo/>}
     </header>
 }

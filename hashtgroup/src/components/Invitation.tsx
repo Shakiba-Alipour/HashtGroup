@@ -15,7 +15,7 @@ const Invitation = ({code}: { code: string }) => {
     //     });
     // };
 
-    return <div className="!w-full bg-Background text-Light-Surface content-center">
+    return <div className="!w-full bg-Background text-Light-Surface content-center" id="invitation">
         <div
             className="border-Secondary-Text rounded-md h-5/6 w-10/12 flex lg:flex-row md:flex-row sm:flex-col-reverse !justify-evenly justify-self-center">
             <div
