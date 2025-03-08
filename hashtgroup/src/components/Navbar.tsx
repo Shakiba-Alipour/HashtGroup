@@ -15,7 +15,9 @@ const Navbar=()=>{
 
     // useEffect({},[])
 
-    return<header className="w-full flex flex-row justify-around mt-4 mb-4 border-b-blue-950 bg-Background">
+    return<header className="w-full sticky flex flex-row justify-around mt-4 mb-4 border-b-blue-950 bg-Background"
+                  style={{background:`background: linear-gradient(270deg, rgba(6, 15, 41, 0.6) 0%, rgba(6, 15, 41, 0) 49.5%, rgba(6, 15, 41, 0.6) 100%), url(blue-purple-brick-wall-textured-background.jpg);
+        opacity: 0.4;`}}>
         <div className="flex flex-row justify-around w-1/3">
             {menuItems.map(({path, label, key}) => {
                 const isActive=""
