@@ -11,7 +11,7 @@ function App() {
             <Navbar/>
             <Description/>
             <Game/>
-            <Invitation/>
+            <Invitation code="A-21052"/>
         </div>
     );
 }

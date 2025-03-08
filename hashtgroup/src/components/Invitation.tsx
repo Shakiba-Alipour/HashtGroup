@@ -1,12 +1,45 @@
 import Celebration from "../assets/Celebration";
+import ShareIcon from "../assets/ShareIcon";
+import {message} from "antd";
 
-const Invitation = () => {
-    return <div className="w-full bg-Background text-Light-Surface flex flex-row align-middle">
-        <div className="flex flex-col justify-items-start justify-between align-middle">
-            <h2 className="font-bold text-xl">هر دعوت 1000 سکه برای شما!!</h2>
-            <p className="font-light text-sm">متن ساختگی</p>
+const Invitation = ({code}: { code: string }) => {
+
+    // To copy the invitation code into the clipboard
+    // const [messageApi, contextHolder] = message.useMessage();
+    //
+    // const CopyHandler =  () => {
+    //     const response = navigator.clipboard.writeText(code)
+    //     messageApi.open({
+    //         type: 'success',
+    //         content: 'کپی شد',
+    //     });
+    // };
+
+    return <div
+        className="!w-full bg-Background text-Light-Surface">
+        <div
+            className="border-Secondary-Background rounded-md w-10/12 flex lg:flex-row md:flex-row sm:flex-col-reverse justify-evenly">
+            <div
+                className="flex flex-col justify-items-start justify-between content-start text-right w-3/5 gap-y-5 self-center">
+                <h2 className="font-bold text-xl">هر دعوت 1000 سکه برای شما!!</h2>
+                <p className="font-light text-sm text-right">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+                    و با استفاده از
+                    طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
+                    فعلی
+                    تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                {/*<>*/}
+                {/*    {contextHolder}*/}
+                <button
+                    className="bg-Button w-1/2 rounded-md flex flex-row justify-between items-center pr-3 pl-3 pt-1 pb-1"
+                    // onClick={CopyHandler}
+                >
+                    {code}
+                    <ShareIcon/>
+                </button>
+                {/*</>*/}
+            </div>
+            <Celebration className="w-2/3 self-end"/>
         </div>
-        <Celebration className="w-2/3"/>
     </div>
 }
 
