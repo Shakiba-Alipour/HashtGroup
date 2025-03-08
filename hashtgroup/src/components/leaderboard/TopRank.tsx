@@ -1,10 +1,10 @@
-import Platform from "../assets/Platform";
-import GoldCoin from "../assets/coins/GoldCoin";
-import SilverCoin from "../assets/coins/SilverCoin";
-import BronzeCoin from "../assets/coins/BronzeCoin";
-import GoldTrophy from "../assets/trophies/GoldTrophy";
-import SilverTrophy from "../assets/trophies/SilverTrophy";
-import BronzeTrophy from "../assets/trophies/BronzeTrophy";
+import Platform from "../../assets/Platform";
+import GoldCoin from "../../assets/coins/GoldCoin";
+import SilverCoin from "../../assets/coins/SilverCoin";
+import BronzeCoin from "../../assets/coins/BronzeCoin";
+import GoldTrophy from "../../assets/trophies/GoldTrophy";
+import SilverTrophy from "../../assets/trophies/SilverTrophy";
+import BronzeTrophy from "../../assets/trophies/BronzeTrophy";
 
 const TopRank = ({rank, name, points}: { rank: number, name: string, points: number }) => {
     let coin, label, trophy, mt; //mt: margin top

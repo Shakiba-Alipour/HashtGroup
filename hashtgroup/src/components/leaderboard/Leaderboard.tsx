@@ -1,7 +1,7 @@
 import TopRank from "./TopRank";
 
 const Leaderboard = () => {
-    return <div className="bg-Background w-full pt-10 text-Light-Surface">
+    return <div className="bg-Background w-full pt-10 text-Light-Surface" id="leaderboard">
         {/* Top three */}
         <div className="mt-20">
             <h1 className="font-bold text-2xl">برترین‌های ALL IN</h1>
