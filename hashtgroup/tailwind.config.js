@@ -6,7 +6,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:theme.theme,
+      colors:theme.colors,
       fontFamily: {
         sans: ["IranYekanXFaNum", "sans-serif"],
       },
