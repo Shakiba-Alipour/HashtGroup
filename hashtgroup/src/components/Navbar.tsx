@@ -24,17 +24,19 @@ const Navbar = () => {
 
     // useEffect({},[])
 
-    return <header className="w-full sticky flex flex-row justify-around mt-4 mb-4 border-b-blue-950 bg-Background"
-                   style={{
-                       background: `background: linear-gradient(270deg, rgba(6, 15, 41, 0.6) 0%, rgba(6, 15, 41, 0) 49.5%, rgba(6, 15, 41, 0.6) 100%), url(blue-purple-brick-wall-textured-background.jpg);
+    return <header
+        className="w-full sticky flex flex-row align-middle justify-around pt-4 pb-4 border-b-blue-950 bg-Background border-b-Text text-Light-Surface"
+        style={{
+            background: `background: linear-gradient(270deg, rgba(6, 15, 41, 0.6) 0%, rgba(6, 15, 41, 0) 49.5%, rgba(6, 15, 41, 0.6) 100%), url(blue-purple-brick-wall-textured-background.jpg);
         opacity: 0.4;`
-                   }}>
-        <div className="flex flex-row justify-around w-2/5">
+        }}>
+        <div className="flex flex-row justify-around w-2/5 flex-wrap align-middle">
             {menuItems.map(({path, label, key}) => {
                 const isActive = activeSection === path
-                return <div key={key}>
+                return <div key={key} className="flex flex-col align-middle">
                     <a href={path}>{label}</a>
-                    {isActive && <span className="absolute bg-Light w-2 h-2 rounded-full top-[10px]"/>}
+                    {isActive && <span
+                        className="absolute bg-Light-Primary shadow-Light-Shadow w-2 h-2 rounded-full top-[10px]"/>}
                 </div>
             })}
         </div>
