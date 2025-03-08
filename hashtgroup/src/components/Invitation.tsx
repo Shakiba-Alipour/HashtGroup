@@ -20,7 +20,7 @@ const Invitation = ({code}: { code: string }) => {
         <div
             className="border-Secondary-Background rounded-md w-10/12 flex lg:flex-row md:flex-row sm:flex-col-reverse !justify-evenly !content-center">
             <div
-                className="flex flex-col justify-items-start justify-between content-start text-right w-3/5 gap-y-5 self-center pr-3">
+                className="flex flex-col justify-items-start justify-between content-start text-right w-3/5 gap-y-5 self-center">
                 <h2 className="font-bold text-xl">هر دعوت 1000 سکه برای شما!!</h2>
                 <p className="font-light text-sm text-right">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
                     و با استفاده از
@@ -30,7 +30,7 @@ const Invitation = ({code}: { code: string }) => {
                 {/*<>*/}
                 {/*    {contextHolder}*/}
                 <button
-                    className="bg-Button w-1/2 rounded-md flex flex-row justify-between items-center pr-3 pt-1 pb-1"
+                    className="bg-Button w-1/2 rounded-md flex flex-row justify-between items-center pr-3 pl-3 pt-1 pb-1"
                     // onClick={CopyHandler}
                 >
                     {code}
@@ -38,7 +38,7 @@ const Invitation = ({code}: { code: string }) => {
                 </button>
                 {/*</>*/}
             </div>
-            <Celebration className="w-2/3 self-end"/>
+            <Celebration className="w-2/3 self-end left-0"/>
         </div>
     </div>
 }
