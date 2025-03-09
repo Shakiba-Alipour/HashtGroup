@@ -8,7 +8,7 @@ interface AwardProps {
 const Award: React.FC<AwardProps> = ({ prize, points }) => {
   return <div className="flex flex-col mt-12 mb-12 items-center">
       {prize}
-      <div className="text-white bg-Background w-1/3 rounded-2xl mt-4 bg-opacity-20">
+      <div className="text-white bg-Secondary-Text w-1/3 rounded-2xl mt-4 bg-opacity-20">
           {points}
       </div>
   </div>
