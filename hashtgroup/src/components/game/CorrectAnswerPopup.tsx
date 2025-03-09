@@ -7,7 +7,7 @@ const CorrectAnswerPopup = () => {
         <h1 className="text-Secondary-Text font-extrabold text-5xl">برنده شدید!!</h1>
         <p className="text-Secondary-Text ">با شما تماس گرفته می‌شود.</p>
         <CorrectAnswerPrize/>
-        <button className="w-11/12 bg-PrizeButton rounded-md h-9 text-Light-Surface" onClick={}>بازگشت</button>
+        <button className="w-11/12 bg-PrizeButton rounded-md h-9 text-Light-Surface">بازگشت</button>
     </div>
 }
 
