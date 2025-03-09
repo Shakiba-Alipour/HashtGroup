@@ -1,6 +1,10 @@
 const theme = {
     colors: {
         Background: "#060F29",
+        Button:"#1387EC3D",
+        Gold:"#FDCF2E",
+        Silver:"#95AAD0",
+        Bronze:"#E19D46",
         Light: {
             Surface: "#EBEBEB",
             Primary: "#EE3F7C",
@@ -9,7 +13,6 @@ const theme = {
         Secondary: {
             Text: "#F3F3F3"
         },
-        Button:"#1387EC3D"
     }
 }
 

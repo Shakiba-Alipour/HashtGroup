@@ -1,5 +1,6 @@
-const Platform = () => {
-    return <svg width="416" height="199" viewBox="0 0 416 199" fill="none" xmlns="http://www.w3.org/2000/svg">
+const Platform = ({className}: { className?: string }) => {
+    return <svg className={className} width="416" height="199" viewBox="0 0 416 199" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
         <path d="M31.3208 0.202393H384.193L414.176 29.4077H1.33789L31.3208 0.202393Z"
               fill="url(#paint0_linear_79_1663)"/>
         <mask id="path-2-inside-1_79_1663" fill="white">
