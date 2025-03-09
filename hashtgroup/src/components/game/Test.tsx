@@ -1,4 +1,5 @@
 import React, {useRef, useState} from "react";
+import InfoSubmission from "./InfoSubmission";
 
 interface TestProps {
     question: string,
@@ -15,31 +16,8 @@ const Test: React.FC<TestProps> = ({question, optionOne, optionTwo, optionThree,
 
     // to handle getting the user's data
     const handleSubmission = () => {
-        return <div className="w-1/4 flex flex-col z-50 bg-Light-Surface bg-opacity-20 border-Secondary-Text justify-items-center text-right">
-            <h1 className="text-Secondary-Text font-bold text-xl">اطلاعات شما</h1>
-            <input placeholder="نام و نام‌خانوادگی" type="text" className="rounded-md" required/>
-            <input placeholder="نام مدرسه" type="text" className="rounded-md" required/>
-            <input placeholder="شماره تماس" type="number" className="rounded-md" required/>
-            <input placeholder="کد معرف" type="text" className="rounded-md"/>
-            <button className="w-11/12 bg-PrizeButton rounded-md" onClick={handleSelectedAnswer}>دریافت جایزه</button>
-        </div>
+        return <InfoSubmission correctAnswer={answer} selectedAnswer={selectedAnswer.current?.value}/>
     }
-
-    // to check the selected answer
-    const handleSelectedAnswer = () => {
-        // to handle correct selection
-        if (selectedAnswer.current?.value === answer.toString()) {
-            return <div className="w-1/4 flex flex-col z-50 bg-Light-Surface bg-opacity-20 border-Secondary-Text justify-items-center">
-                <h1 className="text-Secondary-Text font-extrabold text-5xl">برنده شدید!!</h1>
-                <p className="text-Secondary-Text ">با شما تماس گرفته می‌شود.</p>
-                <button className="w-11/12 bg-PrizeButton rounded-md">بازگشت</button>
-            </div>
-        }
-        // to handle wrong selection
-        else {
-
-        }
-    };
 
 
     return <div

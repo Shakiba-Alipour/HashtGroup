@@ -4,6 +4,7 @@ import SilverPrize from "../../assets/boxes/SilverPrize";
 import GoldPrize from "../../assets/boxes/GoldPrize";
 import Test from "./Test";
 import BottomWallBackground from "../../assets/background/BottomWallBackground"
+import InfoSubmission from "./InfoSubmission";
 
 const Game = () => {
     return <div className="relative w-full h-[500px] flex items-center justify-center bg-Background">
@@ -18,9 +19,12 @@ const Game = () => {
                 <Award prize={<SilverPrize/>} points={400}/>
                 <Award prize={<GoldPrize/>} points={1000}/>
             </div>
+
+            {/*test*/}
             {/*<Test question="سوال" optionOne="گزینه یک" optionTwo="گزینه دو" optionThree="گزینه سه"*/}
             {/*      optionFour="گزینه چهار"*/}
             {/*      answer={1}/>*/}
+            {/*<InfoSubmission correctAnswer={2} selectedAnswer="2"/>*/}
         </div>
     </div>
 }
