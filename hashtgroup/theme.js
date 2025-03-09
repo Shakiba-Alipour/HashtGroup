@@ -2,6 +2,7 @@ const theme = {
     colors: {
         Background: "#060F29",
         Button:"#1387EC3D",
+        PrizeButton:"#4FC9D0",
         Gold:"#FDCF2E",
         Silver:"#95AAD0",
         Bronze:"#E19D46",

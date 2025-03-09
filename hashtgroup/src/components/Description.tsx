@@ -1,7 +1,7 @@
 import AllinLogo from "../assets/AllinLogo";
 
 const Description = () => {
-    return <div className="w-4/5 flex flex-col justify-self-center items-center" id="description">
+    return <div className="w-full text-Secondary-Text bg-Background flex flex-col justify-self-center items-center" id="description">
         <AllinLogo/>
         <p>اینجا قراره ذهن تو رو به بازی بگیریم! 🎯 سه مرحله، سه سطح از سوالات هوشمندانه، و یه جایزه نهایی که… هنوز کسی
             نمی‌دونه چیه! 🤯</p>
