@@ -34,8 +34,11 @@ const TopRank = ({rank, name, points}: { rank: number, name: string, points: num
     return <div className={`flex flex-col items-center gap-y-4 mt-[${mt}]`}>
         {trophy}
         <p className="font-xl">{name}</p>
-        <p className="flex flex-row-reverse">{coin} {formattedPoints}</p>
-        <Platform/>
+        <p className="flex flex-row-reverse gap-x-2">{coin} {formattedPoints}</p>
+        <>
+            <Platform/>
+            <label className="text-Secondary-Text font-extrabold text-5xl text-opacity-25">{label}</label>
+        </>
     </div>
 }
 
