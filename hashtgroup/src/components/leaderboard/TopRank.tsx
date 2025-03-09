@@ -7,6 +7,9 @@ import SilverTrophy from "../../assets/trophies/SilverTrophy";
 import BronzeTrophy from "../../assets/trophies/BronzeTrophy";
 
 const TopRank = ({rank, name, points}: { rank: number, name: string, points: number }) => {
+    // To add , to the points
+    const formattedPoints = points.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "٬");
+
     let coin, label, trophy, mt; //mt: margin top
     switch (rank) {
         case 1:
@@ -31,7 +34,7 @@ const TopRank = ({rank, name, points}: { rank: number, name: string, points: num
     return <div className={`flex flex-col items-center gap-y-4 mt-[${mt}]`}>
         {trophy}
         <p className="font-xl">{name}</p>
-        <p className="flex flex-row-reverse">{coin} {points}</p>
+        <p className="flex flex-row-reverse">{coin} {formattedPoints}</p>
         <Platform/>
     </div>
 }
