@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from "./components/Navbar";
 import Description from "./components/Description";
-import Game from "./components/Game";
+import Game from "./components/game/Game";
 import Invitation from "./components/Invitation";
 import Leaderboard from "./components/leaderboard/Leaderboard";
 import Footer from "./components/Footer";

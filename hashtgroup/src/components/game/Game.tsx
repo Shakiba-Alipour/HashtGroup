@@ -1,7 +1,7 @@
 import Award from "./Award";
-import BronzePrize from "../assets/boxes/BronzePrize";
-import SilverPrize from "../assets/boxes/SilverPrize";
-import GoldPrize from "../assets/boxes/GoldPrize";
+import BronzePrize from "../../assets/boxes/BronzePrize";
+import SilverPrize from "../../assets/boxes/SilverPrize";
+import GoldPrize from "../../assets/boxes/GoldPrize";
 
 const Game = () => {
   return <div className="mt-16 mb-16" id="game">
