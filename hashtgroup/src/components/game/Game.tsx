@@ -5,6 +5,7 @@ import GoldPrize from "../../assets/boxes/GoldPrize";
 import Test from "./Test";
 import BottomWallBackground from "../../assets/background/BottomWallBackground"
 import InfoSubmission from "./InfoSubmission";
+import CorrectAnswerPopup from "./CorrectAnswerPopup";
 
 const Game = () => {
     return <div className="relative w-full h-[500px] flex items-center justify-center bg-Background">
@@ -25,6 +26,7 @@ const Game = () => {
             {/*      optionFour="گزینه چهار"*/}
             {/*      answer={1}/>*/}
             {/*<InfoSubmission correctAnswer={2} selectedAnswer="2"/>*/}
+            {/*<CorrectAnswerPopup/>*/}
         </div>
     </div>
 }

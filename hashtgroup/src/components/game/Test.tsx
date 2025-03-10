@@ -21,7 +21,7 @@ const Test: React.FC<TestProps> = ({question, optionOne, optionTwo, optionThree,
 
 
     return <div
-        className="flex flex-col justify-items-center self-center justify-self-center flex-wrap content-center w-5/6 bg-Light-Surface bg-opacity-20 border-Secondary-Text rounded-xl p-4 gap-y-4 z-30">
+        className="fixed inset-0 backdrop-blur-md justify-center items-center flex flex-col justify-items-center self-center justify-self-center flex-wrap content-center w-4/6 bg-Light-Surface bg-opacity-10 border-Secondary-Text rounded-xl pr-4 pl-4 pt-6 pb-6 gap-y-4 z-30">
         <p className="text-Secondary-Text w-11/12 text-right">سوال این صندوق</p>
         <div className="bg-Light-Surface w-11/12 rounded-md text-right pr-8 pl-8 pt-2 pb-2">
             <p className="pb-4 flex flex-col">{question}</p>
