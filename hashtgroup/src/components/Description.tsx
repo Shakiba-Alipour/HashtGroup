@@ -1,12 +1,10 @@
 import AllinLogo from "../assets/AllinLogo";
 
 
-const bgSrc = "../assets/background/TopWallBackground.jpg"
-
 const Description = () => {
     return <div className="w-full bg-Background bg-cover bg-center"
                 id="description">
-        <div className="w-full text-Secondary-Text flex flex-col justify-self-center items-center">
+        <div className="w-5/6 text-Secondary-Text flex flex-col justify-self-center items-center">
             <AllinLogo/>
             <p>اینجا قراره ذهن تو رو به بازی بگیریم! 🎯 سه مرحله، سه سطح از سوالات هوشمندانه، و یه جایزه نهایی که… هنوز
                 کسی
