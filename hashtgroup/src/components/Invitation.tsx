@@ -1,6 +1,5 @@
 import Celebration from "../assets/Celebration";
 import ShareIcon from "../assets/ShareIcon";
-import {message} from "antd";
 
 const Invitation = ({code}: { code: string }) => {
 

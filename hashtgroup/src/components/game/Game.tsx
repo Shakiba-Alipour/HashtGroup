@@ -6,19 +6,21 @@ import Test from "./Test";
 import BottomWallBackground from "../../assets/background/BottomWallBackground"
 import InfoSubmission from "./InfoSubmission";
 import CorrectAnswerPopup from "./CorrectAnswerPopup";
+import Puzzle from "./Puzzle";
 
 const Game = () => {
-    return <div className="relative w-full h-[500px] flex items-center justify-center bg-Background">
-        {/*<BottomWallBackground className="absolute inset-0 -z-50 w-screen fill-Background"/>*/}
-        <div className="mt-16 mb-16" id="game">
+    return <div className="relative w-full flex flex-col items-center justify-center bg-Background">
+        {/*<BottomWallBackground className="absolute inset-0 -z-10 w-screen"/>*/}
+        <div className="mt-16 mb-16 sm:w-5/6 z-10" id="game">
+            <Puzzle/>
             <h1 className="font-extrabold text-2xl text-Secondary-Text">جوایز خود را انتخاب کنید</h1>
             <p className="text-Secondary-Text">این یک بازیه مخصوص شما دانش‌آموزان سخت‌کوش که می‌تونید با باز کردن هر
                 صندوق و پاسخ مرتبط امتیاز مورد نیاز خود
                 را کسب کنید.</p>
-            <div className="flex flex-row w-4/5 justify-between justify-self-center">
+            <div className="flex flex-row w-4/5 sm:w-2/3 sm:flex-wrap sm:flex-row-reverse justify-between justify-self-center">
+                <Award prize={<GoldPrize/>} points={1000}/>
                 <Award prize={<BronzePrize/>} points={100}/>
                 <Award prize={<SilverPrize/>} points={400}/>
-                <Award prize={<GoldPrize/>} points={1000}/>
             </div>
 
             {/*test*/}
