@@ -36,7 +36,7 @@ const Invitation = ({code}: { code: string }) => {
                 </button>
                 {/*</>*/}
             </div>
-            <Celebration className="w-2/3 self-end left-0"/>
+            <Celebration className="w-2/3 self-end left-0 sm:justify-self-center sm:align-middle sm:self-center"/>
         </div>
     </div>
 }
