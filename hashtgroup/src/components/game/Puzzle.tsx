@@ -11,6 +11,38 @@ import Group239 from "../../assets/puzzle/disables/Group239";
 import Group223 from "../../assets/puzzle/disables/Group223";
 import Group222 from "../../assets/puzzle/disables/Group222";
 
+// New pieces to replace when clicked
+import ActiveGroup227 from "../../assets/puzzle/enables/Group227";
+import ActiveGroup226 from "../../assets/puzzle/enables/Group226";
+import ActiveGroup219 from "../../assets/puzzle/enables/Group219";
+import ActiveGroup240 from "../../assets/puzzle/enables/Group240";
+import ActiveGroup225 from "../../assets/puzzle/enables/Group225";
+import ActiveGroup220 from "../../assets/puzzle/enables/Group220";
+import ActiveGroup238 from "../../assets/puzzle/enables/Group238";
+import ActiveGroup224 from "../../assets/puzzle/enables/Group224";
+import ActiveGroup221 from "../../assets/puzzle/enables/Group221";
+import ActiveGroup239 from "../../assets/puzzle/enables/Group239";
+import ActiveGroup223 from "../../assets/puzzle/enables/Group223";
+import ActiveGroup222 from "../../assets/puzzle/enables/Group222";
+
+
+import {useState} from "react";
+
+// Object to map disabled pieces to active pieces
+const replacementMap :Record<string, React.FC> ={
+    Group227: ActiveGroup227,
+    Group226: ActiveGroup226,
+    Group219: ActiveGroup219,
+    Group240: ActiveGroup240,
+    Group225: ActiveGroup225,
+    Group220: ActiveGroup220,
+    Group238: ActiveGroup238,
+    Group224: ActiveGroup224,
+    Group221: ActiveGroup221,
+    Group239: ActiveGroup239,
+    Group223: ActiveGroup223,
+    Group222: ActiveGroup222,
+};
 
 const components = {
     Group227,
@@ -27,30 +59,45 @@ const components = {
     Group222,
 };
 
+const initialPieces = [
+    {id: 1, name: "Group227", Component: Group227},
+    {id: 2, name: "Group226", Component: Group226},
+    {id: 3, name: "Group219", Component: Group219},
+    {id: 4, name: "Group240", Component: Group240},
+    {id: 5, name: "Group225", Component: Group225},
+    {id: 6, name: "Group220", Component: Group220},
+    {id: 7, name: "Group238", Component: Group238},
+    {id: 8, name: "Group224", Component: Group224},
+    {id: 9, name: "Group221", Component: Group221},
+    {id: 10, name: "Group239", Component: Group239},
+    {id: 11, name: "Group223", Component: Group223},
+    {id: 12, name: "Group222", Component: Group222},
+];
+
 const Puzzle = () => {
-    const pieces = [
-        {id: 1, name: "Group227"},
-        {id: 2, name: "Group226"},
-        {id: 3, name: "Group219"},
-        {id: 4, name: "Group240"},
-        {id: 5, name: "Group225"},
-        {id: 6, name: "Group220"},
-        {id: 7, name: "Group238"},
-        {id: 8, name: "Group224"},
-        {id: 9, name: "Group221"},
-        {id: 10, name: "Group239"},
-        {id: 11, name: "Group223"},
-        {id: 12, name: "Group222"},
-    ];
+    const [pieces, setPieces] = useState(initialPieces);
+
+    const handlePieceClick = ({id, name}:{id:number,name:string}) => {
+        // @ts-ignore
+        setPieces((prevPieces) =>
+            prevPieces.map((piece) =>
+                piece.id === id
+                    ? {
+                        ...piece,
+                        Component: replacementMap[name],
+                    }
+                    : piece
+            )
+        );
+    };
 
     return (
         <div className="grid grid-cols-3 grid-rows-4 p-4 w-2/3 h-1/2 justify-self-center">
-            {pieces.map(({id, name}) => {
-                // @ts-ignore
-                const Component = components[name];
+            {pieces.map(({id, name, Component}) => {
                 return (
                     <div key={id}
-                         className="flex justify-center items-center self-center justify-self-center w-min md:w-full sm:w-full">
+                         onClick={() => handlePieceClick({id, name})}
+                         className="cursor-pointer flex justify-center items-center self-center justify-self-center w-min md:w-full sm:w-full">
                         <Component/>
                     </div>
                 );
