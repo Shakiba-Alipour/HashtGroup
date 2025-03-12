@@ -26,10 +26,33 @@ import ActiveGroup223 from "../../assets/puzzle/enables/Group223";
 import ActiveGroup222 from "../../assets/puzzle/enables/Group222";
 
 
-import {useState} from "react";
+import React, {useState} from "react";
+import Test from "./Test";
+
+// questions
+const questions = [
+    {
+        id: 1,
+        question: "سوال مربوط به پازل 1؟",
+        options: ["گزینه ۱", "گزینه ۲", "گزینه ۳", "گزینه ۴"],
+        answer: 1,
+    },
+    {
+        id: 2,
+        question: "سوال مربوط به پازل 2؟",
+        options: ["گزینه ۱", "گزینه ۲", "گزینه ۳", "گزینه ۴"],
+        answer: 2,
+    },
+    {
+        id: 3,
+        question: "سوال مربوط به پازل 3؟",
+        options: ["گزینه ۱", "گزینه ۲", "گزینه ۳", "گزینه ۴"],
+        answer: 3,
+    },
+];
 
 // Object to map disabled pieces to active pieces
-const replacementMap :Record<string, React.FC> ={
+const replacementMap: Record<string, React.FC> = {
     Group227: ActiveGroup227,
     Group226: ActiveGroup226,
     Group219: ActiveGroup219,
@@ -74,10 +97,24 @@ const initialPieces = [
     {id: 12, name: "Group222", Component: Group222},
 ];
 
+
 const Puzzle = () => {
     const [pieces, setPieces] = useState(initialPieces);
+    const [selectedPiece, setSelectedPiece] = useState<{ id: number; name: string } | null>(null);
+    const [showTest, setShowTest] = useState(false);
 
-    const handlePieceClick = ({id, name}:{id:number,name:string}) => {
+    // to find the selected question
+    const selectedQuestion = selectedPiece
+        ? questions.find((q) => q.id === selectedPiece.id)
+        : null;
+
+    const handlePieceClick = ({id, name}: { id: number, name: string }) => {
+        // if a piece is enabled, you  can not choose another piece
+        if (selectedPiece) return;
+
+        setSelectedPiece({id, name});
+        setShowTest(true)
+
         // @ts-ignore
         setPieces((prevPieces) =>
             prevPieces.map((piece) =>
@@ -91,6 +128,12 @@ const Puzzle = () => {
         );
     };
 
+    const handleCloseTest = () => {
+        setSelectedPiece(null);
+        setPieces(initialPieces);
+        setShowTest(false)
+    };
+
     return (
         <div className="grid grid-cols-3 grid-rows-4 p-4 w-2/3 h-1/2 justify-self-center">
             {pieces.map(({id, name, Component}) => {
@@ -102,6 +145,14 @@ const Puzzle = () => {
                     </div>
                 );
             })}
+            {showTest && selectedQuestion &&
+                <Test question={selectedQuestion.question}
+                      optionOne={selectedQuestion.options[0]}
+                      optionTwo={selectedQuestion.options[1]}
+                      optionThree={selectedQuestion.options[2]}
+                      optionFour={selectedQuestion.options[3]}
+                      answer={selectedQuestion.answer}
+                      onClose={handleCloseTest}/>}
         </div>
     );
 };
