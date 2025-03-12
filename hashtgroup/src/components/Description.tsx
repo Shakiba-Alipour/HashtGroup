@@ -2,7 +2,7 @@ import AllinLogo from "../assets/AllinLogo";
 
 
 const Description = () => {
-    return <div className="w-full bg-Background bg-cover bg-center"
+    return <div className="w-full"
                 id="description">
         <div className="w-5/6 text-Secondary-Text flex flex-col justify-self-center items-center">
             <AllinLogo/>

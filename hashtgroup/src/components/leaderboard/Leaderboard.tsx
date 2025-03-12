@@ -2,7 +2,7 @@ import TopRank from "./TopRank";
 import Table from "./Table";
 
 const Leaderboard = () => {
-    return <div className="bg-Background w-full pt-10 text-Light-Surface flex flex-col justify-items-center" id="leaderboard">
+    return <div className="w-full pt-10 text-Light-Surface flex flex-col justify-items-center" id="leaderboard">
         {/* Top three */}
         <div className="mt-20">
             <h1 className="font-bold text-2xl mb-4">برترین‌های ALL IN</h1>

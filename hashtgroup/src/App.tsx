@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 
 function App() {
     return (
-        <div className="App w-full flex flex-col items-center">
+        <div className="App bg-[url(/src/assets/background/bg.svg)] bg-Background w-full flex flex-col items-center">
             <Navbar/>
             <Description/>
             <Game/>
