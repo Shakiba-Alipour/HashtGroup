@@ -135,12 +135,12 @@ const Puzzle = () => {
     };
 
     return (
-        <div className="grid grid-cols-3 grid-rows-4 p-4 w-2/3 h-1/2 justify-self-center">
+        <div className="grid grid-cols-3 grid-rows-4 mb-20 w-2/3 h-1/2 justify-self-center">
             {pieces.map(({id, name, Component}) => {
                 return (
                     <div key={id}
                          onClick={() => handlePieceClick({id, name})}
-                         className="cursor-pointer flex justify-center items-center self-center justify-self-center w-min md:w-full sm:w-full">
+                         className="cursor-pointer flex sm:w-14 sm:h-28 md:w-20 md:h-36 lg:w-40 lg:h-32 justify-center items-center self-center justify-self-center">
                         <Component/>
                     </div>
                 );
