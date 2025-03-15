@@ -1,9 +1,9 @@
 import initialPieces from "./data/initialPieces";
-import {useCallback, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import InfoSubmission from "./InfoSubmission";
 import Test from "./Test";
 import replacementMap from "./data/puzzlePiecesReplacement";
-import questions from "./data/quextions";
+import questions from "./data/questions";
 
 type PuzzlePiece = {
     id: number;
@@ -16,6 +16,7 @@ type GameState = {
     selectedPiece: { id: number; name: string } | null;
     showTest: boolean;
     userAnswer: number | null;
+    showInfoSubmission: boolean;
 };
 
 const Puzzle: React.FC = () => {
@@ -24,6 +25,7 @@ const Puzzle: React.FC = () => {
         selectedPiece: null,
         showTest: false,
         userAnswer: null,
+        showInfoSubmission: false
     });
 
     // to find the selected question
@@ -51,19 +53,25 @@ const Puzzle: React.FC = () => {
             showTest: false,
             userAnswer: answer,
         }));
-    }, []);
 
-    // If the test is displayed and user clicks outside the test box,
-    // the test will disappear and the user can choose another puzzle piece
-    // const handleClickOutside = useCallback(() => {
-    //     if (gameState.showTest) {
-    //         setGameState((prev) => ({
-    //             ...prev,
-    //             selectedPiece: null,
-    //             showTest: false,
-    //         }));
-    //     }
-    // }, [gameState.showTest]);
+        setTimeout(() => {
+            setGameState((prev) => ({
+                ...prev,
+                showInfoSubmission: true,
+            }));
+        }, 0);
+    }, [gameState.userAnswer]);
+
+    // to reset the puzzles
+    const resetHandler = useCallback(() => {
+        setGameState((prev) => ({
+            ...prev,
+            pieces: initialPieces,
+            selectedPiece: null,
+            showTest: false,
+            userAnswer: null
+        }));
+    }, []);
 
     return (
         <div className="flex justify-center items-center">
@@ -81,15 +89,15 @@ const Puzzle: React.FC = () => {
                     <Test
                         question={selectedQuestion.question}
                         options={selectedQuestion.options}
-                        onClose={() => {
-                        }}
+                        onClose={resetHandler}
                         onAnswerSubmit={handleAnswerSubmission}
                     />
                 )}
-                {gameState.userAnswer !== null && selectedQuestion && (
+                {gameState.userAnswer !== null && gameState.showInfoSubmission && selectedQuestion && (
                     <InfoSubmission
                         correctAnswer={selectedQuestion.answer}
                         selectedAnswer={gameState.userAnswer}
+                        onReset={resetHandler}
                     />
                 )}
             </div>

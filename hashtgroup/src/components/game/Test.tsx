@@ -39,9 +39,9 @@ const Test: React.FC<TestProps & { onClose: () => void }> = ({
 
         <button className="w-11/12 bg-PrizeButton rounded-md pt-1 pb-1 text-Secondary-Text"
                 onClick={() => {
-                    if (selectedAnswer !== null) {
-                        onAnswerSubmit(selectedAnswer);
-                    }
+                    const answer = Number(selectedAnswerField.current?.value);
+                    setSelectedAnswer(answer);
+                    onAnswerSubmit(answer);
                 }}>دریافت جایزه
         </button>
     </div>
