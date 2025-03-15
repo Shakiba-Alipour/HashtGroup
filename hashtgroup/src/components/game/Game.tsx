@@ -2,9 +2,6 @@ import Award from "./Award";
 import BronzePrize from "../../assets/boxes/BronzePrize";
 import SilverPrize from "../../assets/boxes/SilverPrize";
 import GoldPrize from "../../assets/boxes/GoldPrize";
-import Test from "./Test";
-import InfoSubmission from "./InfoSubmission";
-import CorrectAnswerPopup from "./CorrectAnswerPopup";
 import Puzzle from "./Puzzle";
 
 const Game = () => {
@@ -18,8 +15,8 @@ const Game = () => {
             <div
                 className="flex flex-col sm:flex-row-reverse sm:flex-wrap w-4/5 sm:w-2/3 justify-between justify-self-center gap-4">
                 <Award prize={<GoldPrize/>} points={1000}/>
-                <Award prize={<BronzePrize/>} points={100}/>
                 <Award prize={<SilverPrize/>} points={400}/>
+                <Award prize={<BronzePrize/>} points={100}/>
             </div>
         </div>
     </div>

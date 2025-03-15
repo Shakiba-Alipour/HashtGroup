@@ -1,91 +1,98 @@
-import React, {useRef, useState} from "react";
-import Test from "./Test";
+import initialPieces from "./data/initialPieces";
+import {useCallback, useState} from "react";
 import InfoSubmission from "./InfoSubmission";
+import Test from "./Test";
+import replacementMap from "./data/puzzlePiecesReplacement";
+import questions from "./data/quextions";
 
+type PuzzlePiece = {
+    id: number;
+    name: string;
+    Component: React.FC;
+};
 
-const Puzzle = () => {
-    const [pieces, setPieces] = useState(initialPieces);
-    const [selectedPiece, setSelectedPiece] = useState<{ id: number; name: string } | null>(null);
-    const [showTest, setShowTest] = useState(false);
-    const [showInfoSubmission, setShowInfoSubmission] = useState(false);
-    const [userAnswer, setUserAnswer] = useState<number | null>(null);
-    const testRef = useRef<HTMLDivElement | null>(null);
+type GameState = {
+    pieces: PuzzlePiece[];
+    selectedPiece: { id: number; name: string } | null;
+    showTest: boolean;
+    userAnswer: number | null;
+};
+
+const Puzzle: React.FC = () => {
+    const [gameState, setGameState] = useState<GameState>({
+        pieces: initialPieces,
+        selectedPiece: null,
+        showTest: false,
+        userAnswer: null,
+    });
 
     // to find the selected question
-    const selectedQuestion = selectedPiece
-        ? questions.find((q) => q.id === selectedPiece.id)
+    const selectedQuestion = gameState.selectedPiece
+        ? questions.find((q) => q.id === gameState.selectedPiece?.id)
         : null;
 
-    const handlePieceClick = ({id, name}: { id: number, name: string }) => {
+    const handlePieceClick = useCallback(({id, name}: { id: number; name: string }) => {
         // if a piece is enabled, you  can not choose another piece
-        if (selectedPiece) return;
+        if (gameState.selectedPiece) return;
 
-        setSelectedPiece({id, name});
-        setShowTest(true)
+        setGameState((prev) => ({
+            ...prev,
+            selectedPiece: {id, name},
+            showTest: true,
+            pieces: prev.pieces.map((piece) =>
+                piece.id === id ? {...piece, Component: replacementMap[name]} : piece
+            ),
+        }));
+    }, [gameState.selectedPiece]);
 
-        // @ts-ignore
-        setPieces((prevPieces) =>
-            prevPieces.map((piece) =>
-                piece.id === id
-                    ? {
-                        ...piece,
-                        Component: replacementMap[name],
-                    }
-                    : piece
-            )
-        );
-    };
+    const handleAnswerSubmission = useCallback((answer: number) => {
+        setGameState((prev) => ({
+            ...prev,
+            showTest: false,
+            userAnswer: answer,
+        }));
+    }, []);
 
-    const handleAnswerSubmission = (answer: number) => {
-        setSelectedPiece(null);
-        setPieces(initialPieces);
-        setShowTest(false);
-        setUserAnswer(answer);
-        setShowInfoSubmission(true);
-    };
-
-    // If the test is displayed and user click outside the test box, the test will be disappeared
-    // and the user can choose another puzzle piece
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (testRef.current && !testRef.current.contains(event.target as Node)) {
-                setShowTest(false);
-                setSelectedPiece(null);
-                setPieces(initialPieces);
-            }
-        };
-
-        if (showTest) {
-            document.addEventListener("mousedown", handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [showTest]);
+    // If the test is displayed and user clicks outside the test box,
+    // the test will disappear and the user can choose another puzzle piece
+    // const handleClickOutside = useCallback(() => {
+    //     if (gameState.showTest) {
+    //         setGameState((prev) => ({
+    //             ...prev,
+    //             selectedPiece: null,
+    //             showTest: false,
+    //         }));
+    //     }
+    // }, [gameState.showTest]);
 
     return (
-        <div className="grid grid-cols-3 grid-rows-4 mb-20 w-2/3 h-1/2 justify-self-center">
-            {pieces.map(({id, name, Component}) => {
-                return (
-                    <div key={id}
-                         onClick={() => handlePieceClick({id, name})}
-                         className="w-20 h-20 sm:w-40 sm:h-40 md:w-50 md:h-50 lg:w-60 lg:h-60 cursor-pointer flex justify-center items-center self-center justify-self-center">
+        <div className="flex justify-center items-center">
+            <div className="grid grid-cols-3 grid-rows-4 mb-20 justify-self-center">
+                {gameState.pieces.map(({id, name, Component}) => (
+                    <div
+                        key={id}
+                        onClick={() => handlePieceClick({id, name})}
+                        className="w-20 h-20 sm:w-40 sm:h-40 md:w-50 md:h-50 lg:w-60 lg:h-60 cursor-pointer flex justify-center items-center self-center justify-self-center"
+                    >
                         <Component/>
                     </div>
-                );
-            })}
-            {showTest && selectedQuestion &&
-                <Test question={selectedQuestion.question}
-                      optionOne={selectedQuestion.options[0]}
-                      optionTwo={selectedQuestion.options[1]}
-                      optionThree={selectedQuestion.options[2]}
-                      optionFour={selectedQuestion.options[3]}
-                      onClose={()=>{}}
-                      onAnswerSubmit={(answer) => handleAnswerSubmission(answer)}/>}
-
-            {showInfoSubmission && selectedQuestion && userAnswer &&
-                <InfoSubmission correctAnswer={selectedQuestion?.answer} selectedAnswer={userAnswer}/>}
+                ))}
+                {gameState.showTest && selectedQuestion && (
+                    <Test
+                        question={selectedQuestion.question}
+                        options={selectedQuestion.options}
+                        onClose={() => {
+                        }}
+                        onAnswerSubmit={handleAnswerSubmission}
+                    />
+                )}
+                {gameState.userAnswer !== null && selectedQuestion && (
+                    <InfoSubmission
+                        correctAnswer={selectedQuestion.answer}
+                        selectedAnswer={gameState.userAnswer}
+                    />
+                )}
+            </div>
         </div>
     );
 };

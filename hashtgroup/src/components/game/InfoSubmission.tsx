@@ -3,7 +3,7 @@ import CorrectAnswerPopup from "./CorrectAnswerPopup";
 
 const InfoSubmission = ({correctAnswer, selectedAnswer}: {
     correctAnswer: number,
-    selectedAnswer: string | undefined
+    selectedAnswer: number | undefined
 }) => {
     // input style
     const inputStyle = "rounded-md h-9 pr-2 w-5/6"
@@ -11,7 +11,7 @@ const InfoSubmission = ({correctAnswer, selectedAnswer}: {
     // to check the selected answer
     const handleSelectedAnswer = () => {
         // to handle correct selection
-        if (selectedAnswer === correctAnswer.toString()) {
+        if (selectedAnswer === correctAnswer) {
             return <CorrectAnswerPopup/>
         }
         // to handle wrong selection
