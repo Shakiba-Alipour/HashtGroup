@@ -145,7 +145,7 @@ const Puzzle = () => {
                 return (
                     <div key={id}
                          onClick={() => handlePieceClick({id, name})}
-                         className="sm:w-40 sm:h-40 md:w-50 md:h-50 lg:w-60 lg:h-60 cursor-pointer flex justify-center items-center self-center justify-self-center">
+                         className="w-20 h-20 sm:w-40 sm:h-40 md:w-50 md:h-50 lg:w-60 lg:h-60 cursor-pointer flex justify-center items-center self-center justify-self-center">
                         <Component/>
                     </div>
                 );
