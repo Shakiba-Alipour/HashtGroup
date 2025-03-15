@@ -29,8 +29,6 @@ const Navbar = () => {
         }
     };
 
-    // useEffect({},[])
-
     return <header
         className="w-full sticky flex flex-row align-middle justify-around pt-4 pb-4 border-b-blue-950 bg-Background border-b-Text text-Light-Surface"
         style={{
@@ -42,7 +40,7 @@ const Navbar = () => {
                 const isActive = activeSection === path
                 return <div key={key} className="flex flex-col align-middle cursor-pointer" onClick={() => handleScroll(path)}>
                     <li id={path}>{label}</li>
-                    {isActive && <span
+                    {isActive && !isMobile && <span
                         className="absolute bg-Light-Primary shadow-Light-Shadow w-2 h-2 rounded-full top-[45px] self-center"/>}
                 </div>
             })}
