@@ -28,6 +28,7 @@ import ActiveGroup222 from "../../assets/puzzle/enables/Group222";
 
 import React, {useState} from "react";
 import Test from "./Test";
+import InfoSubmission from "./InfoSubmission";
 
 // questions
 const questions = [
@@ -102,6 +103,8 @@ const Puzzle = () => {
     const [pieces, setPieces] = useState(initialPieces);
     const [selectedPiece, setSelectedPiece] = useState<{ id: number; name: string } | null>(null);
     const [showTest, setShowTest] = useState(false);
+    const [showInfoSubmission, setShowInfoSubmission] = useState(false);
+    const [userAnswer, setUserAnswer] = useState<number | null>(null);
 
     // to find the selected question
     const selectedQuestion = selectedPiece
@@ -128,10 +131,12 @@ const Puzzle = () => {
         );
     };
 
-    const handleCloseTest = () => {
+    const handleAnswerSubmission = (answer: number) => {
         setSelectedPiece(null);
         setPieces(initialPieces);
-        setShowTest(false)
+        setShowTest(false);
+        setUserAnswer(answer);
+        setShowInfoSubmission(true);
     };
 
     return (
@@ -140,7 +145,7 @@ const Puzzle = () => {
                 return (
                     <div key={id}
                          onClick={() => handlePieceClick({id, name})}
-                         className="cursor-pointer flex sm:w-14 sm:h-28 md:w-20 md:h-36 lg:w-40 lg:h-32 justify-center items-center self-center justify-self-center">
+                         className="sm:w-40 sm:h-40 md:w-50 md:h-50 lg:w-60 lg:h-60 cursor-pointer flex justify-center items-center self-center justify-self-center">
                         <Component/>
                     </div>
                 );
@@ -151,8 +156,11 @@ const Puzzle = () => {
                       optionTwo={selectedQuestion.options[1]}
                       optionThree={selectedQuestion.options[2]}
                       optionFour={selectedQuestion.options[3]}
-                      answer={selectedQuestion.answer}
-                      onClose={handleCloseTest}/>}
+                      onClose={()=>{}}
+                      onAnswerSubmit={(answer) => handleAnswerSubmission(answer)}/>}
+
+            {showInfoSubmission && selectedQuestion && userAnswer &&
+                <InfoSubmission correctAnswer={selectedQuestion?.answer} selectedAnswer={userAnswer}/>}
         </div>
     );
 };
