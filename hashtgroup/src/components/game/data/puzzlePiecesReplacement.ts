@@ -13,7 +13,7 @@ import ActiveGroup223 from "../../../assets/puzzle/enables/Group223";
 import ActiveGroup222 from "../../../assets/puzzle/enables/Group222";
 
 // Object to map disabled pieces to active pieces
-const replacementMap: Record<string, React.FC> = {
+const Pieces: Record<string, React.FC> = {
     Group227: ActiveGroup227,
     Group226: ActiveGroup226,
     Group219: ActiveGroup219,
@@ -28,4 +28,4 @@ const replacementMap: Record<string, React.FC> = {
     Group222: ActiveGroup222,
 };
 
-export default replacementMap
+export default Pieces

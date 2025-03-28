@@ -1,8 +1,7 @@
-import initialPieces from "./data/initialPieces";
-import {useCallback, useEffect, useState} from "react";
+import Pieces from "./data/initialPieces";
+import {useCallback, useState} from "react";
 import InfoSubmission from "./InfoSubmission";
 import Test from "./Test";
-import replacementMap from "./data/puzzlePiecesReplacement";
 import questions from "./data/questions";
 
 type PuzzlePiece = {
@@ -21,7 +20,7 @@ type GameState = {
 
 const Puzzle: React.FC = () => {
     const [gameState, setGameState] = useState<GameState>({
-        pieces: initialPieces,
+        pieces: Pieces,
         selectedPiece: null,
         showTest: false,
         userAnswer: null,
@@ -41,9 +40,6 @@ const Puzzle: React.FC = () => {
             ...prev,
             selectedPiece: {id, name},
             showTest: true,
-            pieces: prev.pieces.map((piece) =>
-                piece.id === id ? {...piece, Component: replacementMap[name]} : piece
-            ),
         }));
     }, [gameState.selectedPiece]);
 
@@ -66,7 +62,7 @@ const Puzzle: React.FC = () => {
     const resetHandler = useCallback(() => {
         setGameState((prev) => ({
             ...prev,
-            pieces: initialPieces,
+            pieces: Pieces,
             selectedPiece: null,
             showTest: false,
             userAnswer: null

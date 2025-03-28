@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import InfoSubmission from "./InfoSubmission";
 
 interface TestProps {
@@ -18,7 +18,22 @@ const Test: React.FC<TestProps & { onClose: () => void }> = ({
     // to show info submission
     const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
 
-    return <div
+    // to close the test menu
+    const menuRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+                onClose()
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+
+
+    return <div ref={menuRef}
         className="fixed inset-0 backdrop-blur-md justify-center items-center flex flex-col justify-items-center self-center justify-self-center flex-wrap content-center w-4/6 bg-Light-Surface bg-opacity-10 border-Secondary-Text rounded-xl pr-4 pl-4 pt-6 pb-6 gap-y-4 z-30">
 
         <p className="text-Secondary-Text w-11/12 text-right">سوال این صندوق</p>
