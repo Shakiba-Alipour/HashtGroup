@@ -16,7 +16,7 @@ const Invitation = ({code}: { code: string }) => {
 
     return <div className="flex flex-wrap !w-full mt-30 text-Light-Surface content-center justify-center align-middle sm:items-center" id="invitation">
         <div
-            className="bg-gradient-to-tl flex flex-wrap flex-col-reverse md:!flex-row lg:!flex-row xl:!flex-row 2xl:!flex-row content-center from-Background to-Light-Surface/30 sm:items-center self-center rounded-lg border-Secondary-Text h-5/6 w-10/12 sm:3/4 !justify-evenly !justify-self-center">
+            className="bg-gradient-to-tl flex flex-wrap flex-col-reverse md:flex-nowrap lg:flex-nowrap xl:flex-nowrap 2xl:flex-nowrap md:flex-row lg:flex-row xl:flex-row 2xl:flex-row content-center from-Background to-Light-Surface/30 sm:items-center self-center rounded-lg border-Secondary-Text h-5/6 w-10/12 sm:3/4 !justify-evenly !justify-self-center">
             <div
                 className="flex flex-col justify-items-start justify-between content-start text-right w-3/5 gap-y-5 self-center p-8">
                 <h2 className="font-bold text-xl">هر دعوت 1000 سکه برای شما!!</h2>
