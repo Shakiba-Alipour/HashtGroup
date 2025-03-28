@@ -5,8 +5,8 @@ import GoldPrize from "../../assets/boxes/GoldPrize";
 import Puzzle from "./Puzzle";
 
 const Game = () => {
-    return <div className="relative w-full flex flex-col items-center justify-center">
-        <div className="mt-16 mb-16 sm:w-5/6 z-10" id="game">
+    return <div className="relative w-full flex flex-col items-center justify-center" id="game">
+        <div className="mt-16 mb-16 sm:w-5/6 z-10">
             <Puzzle/>
             <h1 className="font-extrabold text-2xl text-Secondary-Text">جوایز خود را انتخاب کنید</h1>
             <p className="text-Secondary-Text">این یک بازیه مخصوص شما دانش‌آموزان سخت‌کوش که می‌تونید با باز کردن هر
