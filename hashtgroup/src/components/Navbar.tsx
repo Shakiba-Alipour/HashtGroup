@@ -11,61 +11,41 @@ const menuItems = [
     {path: "leaderboard", label: "لیدربورد", key: "leaderboard-key"}
 ]
 
-const handleScroll = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-        element.scrollIntoView({behavior: "smooth"});
-    }
-};
-
-const MobileMenu: React.FC = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen)
-    }
-
-    const handleClick = (id: string) => {
-        setIsMenuOpen(false)
-        handleScroll(id)
-    }
-
-    return <div><Button className="text-white" icon={<MenuOutlined/>} onClick={toggleMenu}/>
-        {isMenuOpen && <div>
-            <div>
-                {menuItems.map((item) => (<div key={item.key}
-                                               onClick={() => handleClick(item.key)}>
-                    {item.label}
-                </div>))}
-            </div>
-        </div>}
-    </div>
-}
-
-const DesktopMenu: React.FC = () => {
+const Navbar: React.FC = () => {
     // To hold the active path
     const [activeSection, setActiveSection] = useState("description")
 
+    useEffect(() => {
+        const handleScroll = () => {
+            let maxVisible = 0;
+            let currentSection = activeSection;
+
+            menuItems.forEach(({ path }) => {
+                const element = document.getElementById(path);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    const visibleHeight = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
+
+                    if (visibleHeight > maxVisible) {
+                        maxVisible = visibleHeight;
+                        currentSection = path;
+                    }
+                }
+            });
+
+            setActiveSection(currentSection);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
     const handleClick = (id: string) => {
         setActiveSection(id)
-        handleScroll(id)
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({behavior: "smooth"});
+        }
     }
-
-    return <ul className="flex flex-row justify-around gap-x-4 w-2/5 flex-wrap align-middle">
-        {menuItems.map(({path, label, key}) => {
-            const isActive = activeSection === path
-            return <div key={key} className="flex flex-col align-middle cursor-pointer"
-                        onClick={() => handleClick(path)}>
-                <li id={key}>{label}</li>
-                {isActive && <span
-                    className="absolute bg-Light-Primary shadow-Light-Shadow w-2 h-2 rounded-full top-[45px] self-center"/>}
-            </div>
-
-        })}
-    </ul>
-}
-
-const Navbar: React.FC = () => {
 
     // To check the screen size
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
@@ -77,9 +57,22 @@ const Navbar: React.FC = () => {
 
 
     return <header
-        className="w-full fixed flex flex-row align-middle justify-around pt-4 pb-4 border-b-blue-950 bg-Background border-b-Text text-Light-Surface"
+        className="w-full fixed flex flex-row z-50 align-middle justify-around pt-4 pb-4 border-b-blue-950 bg-Background border-b-Text text-Light-Surface"
     >
-        {isMobile ? <> </> : <DesktopMenu/>}
+
+        <ul className="flex flex-row justify-around w-max gap-x-4 md:gap-x-8 lg:gap-x-20 xl:gap-x-24 2xl:gap-x-28 flex-wrap align-middle">
+            {menuItems.map(({path, label, key}) => {
+                const isActive = activeSection === path
+                return <div key={key} className="flex flex-col align-middle cursor-pointer text-xs sm:text-sm md:text-md lg:text-base xl:text-base 2xl:text-lg"
+                            onClick={() => handleClick(path)}>
+                    <li id={key}>{label}</li>
+                    {isActive && <span
+                        className="absolute bg-Light-Primary shadow-Light-Shadow w-2 h-2 rounded-full top-[45px] self-center"/>}
+                </div>
+
+            })}
+        </ul>
+
         {isMobile ? <Logo/> : <MainLogo/>}
     </header>
 }
