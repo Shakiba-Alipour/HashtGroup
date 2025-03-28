@@ -1,5 +1,5 @@
-const AllinLogo = () => {
-  return <svg width="414" height="200" viewBox="0 0 414 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+const AllinLogo = ({className}:{className: string}) => {
+  return <svg className={className} width="414" height="200" viewBox="0 0 414 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_dddddddd_79_1425)">
           <rect x="40.7812" y="40.5714" width="332.438" height="118.937" rx="20" fill="#0198A1" fillOpacity="0.08" shapeRendering="crispEdges"/>
           <rect x="41.2812" y="41.0714" width="331.438" height="117.937" rx="19.5" stroke="#36DAE3" shapeRendering="crispEdges"/>
