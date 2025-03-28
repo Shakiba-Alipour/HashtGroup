@@ -23,7 +23,7 @@ const Leaderboard = () => {
                 <p className="text-sm font-light">متن ساختگی</p>
 
 
-                <div className="flex flex-col lg:flex-row justify-around align-top items-end gap-8 w-fit h-fit lg:w-4/6">
+                <div className="flex flex-col lg:flex-row justify-around align-top items-end gap-x-40 w-fit h-fit lg:w-4/6">
 
                     <div className="lg:order-1 h-fit flex justify-center">
                         <TopRank rank={orderedRanks[1].rank} name={orderedRanks[1].name}
