@@ -15,26 +15,26 @@ const Navbar: React.FC = () => {
     // To hold the active path
     const [activeSection, setActiveSection] = useState("description")
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    }
+                });
+            },
+            { threshold: 0.5 }
+        );
 
-    // useEffect(() => {
-    //     const observer = new IntersectionObserver(
-    //         (entries) => {
-    //             const visibleEntry = entries.find(entry => entry.isIntersecting && entry.intersectionRatio >= 0.3);
-    //
-    //             if (visibleEntry) {
-    //                 setActiveSection(visibleEntry.target.id);
-    //             }
-    //         },
-    //         {threshold: 0.3}
-    //     );
-    //
-    //     menuItems.forEach(({path}) => {
-    //         const element = document.getElementById(path);
-    //         if (element) observer.observe(element);
-    //     });
-    //
-    //     return () => observer.disconnect();
-    // }, []);
+        menuItems.forEach(({ path }) => {
+            const element = document.getElementById(path);
+            if (element) observer.observe(element);
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
     const handleClick = (id: string) => {
         setActiveSection(id)
         const element = document.getElementById(id);
