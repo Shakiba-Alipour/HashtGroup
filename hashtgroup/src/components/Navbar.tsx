@@ -15,30 +15,26 @@ const Navbar: React.FC = () => {
     // To hold the active path
     const [activeSection, setActiveSection] = useState("description")
 
-    useEffect(() => {
-        const handleScroll = () => {
-            let maxVisible = 0;
-            let currentSection = activeSection;
 
-            menuItems.forEach(({ path }) => {
-                const element = document.getElementById(path);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    const visibleHeight = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
-
-                    if (visibleHeight > maxVisible) {
-                        maxVisible = visibleHeight;
-                        currentSection = path;
-                    }
-                }
-            });
-
-            setActiveSection(currentSection);
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    // useEffect(() => {
+    //     const observer = new IntersectionObserver(
+    //         (entries) => {
+    //             const visibleEntry = entries.find(entry => entry.isIntersecting && entry.intersectionRatio >= 0.3);
+    //
+    //             if (visibleEntry) {
+    //                 setActiveSection(visibleEntry.target.id);
+    //             }
+    //         },
+    //         {threshold: 0.3}
+    //     );
+    //
+    //     menuItems.forEach(({path}) => {
+    //         const element = document.getElementById(path);
+    //         if (element) observer.observe(element);
+    //     });
+    //
+    //     return () => observer.disconnect();
+    // }, []);
     const handleClick = (id: string) => {
         setActiveSection(id)
         const element = document.getElementById(id);
@@ -63,7 +59,8 @@ const Navbar: React.FC = () => {
         <ul className="flex flex-row justify-around w-max gap-x-4 md:gap-x-8 lg:gap-x-20 xl:gap-x-24 2xl:gap-x-28 flex-wrap align-middle">
             {menuItems.map(({path, label, key}) => {
                 const isActive = activeSection === path
-                return <div key={key} className="flex flex-col align-middle cursor-pointer text-xs sm:text-sm md:text-md lg:text-base xl:text-base 2xl:text-lg"
+                return <div key={key}
+                            className="flex flex-col align-middle cursor-pointer text-xs sm:text-sm md:text-md lg:text-base xl:text-base 2xl:text-lg"
                             onClick={() => handleClick(path)}>
                     <li id={key}>{label}</li>
                     {isActive && <span
