@@ -15,21 +15,21 @@ const TopRank = ({rank, name, points}: { rank: number, name: string, points: num
         case 1:
             coin = <GoldCoin/>
             label = "اول"
-            trophy = <GoldTrophy/>
+            trophy = <GoldTrophy className="w-2/3"/>
             mt = 50
             bgColor = "bg-Gold"
             break;
         case 2:
             coin = <SilverCoin/>
             label = "دوم"
-            trophy = <SilverTrophy/>
+            trophy = <SilverTrophy className="w-2/3"/>
             mt = 100
             bgColor = "bg-Silver"
             break;
         case 3:
             coin = <BronzeCoin/>
             label = "سوم"
-            trophy = <BronzeTrophy/>
+            trophy = <BronzeTrophy className="w-2/3"/>
             mt = 150
             bgColor = "bg-Bronze"
             break

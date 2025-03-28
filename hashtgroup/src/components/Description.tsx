@@ -2,9 +2,9 @@ import AllinLogo from "../assets/AllinLogo";
 
 
 const Description = () => {
-    return <div className="w-full"
+    return <div className="w-full mt-20 lg:mt-30 xl:mt-40 2xl:mt-40 "
                 id="description">
-        <div className="w-5/6 mt-20 lg:mt-30 xl:mt-40 2xl:mt-40 text-Secondary-Text flex flex-col justify-self-center items-center">
+        <div className="w-5/6 text-Secondary-Text flex flex-col justify-self-center items-center">
             <AllinLogo className="w-full"/>
             <p>اینجا قراره ذهن تو رو به بازی بگیریم! 🎯 سه مرحله، سه سطح از سوالات هوشمندانه، و یه جایزه نهایی که… هنوز
                 کسی

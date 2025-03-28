@@ -1,5 +1,5 @@
-const SilverTrophy = () => {
-    return <svg width="231" height="194" viewBox="0 0 231 194" fill="none" xmlns="http://www.w3.org/2000/svg"
+const SilverTrophy = ({className}:{className:string}) => {
+    return <svg className={className} width="231" height="194" viewBox="0 0 231 194" fill="none" xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink">
         <rect x="0.7948" y="0.508057" width="230" height="192.694" fill="url(#pattern0_79_1655)"/>
         <defs>

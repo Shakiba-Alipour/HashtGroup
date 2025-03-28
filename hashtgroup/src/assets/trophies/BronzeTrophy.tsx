@@ -1,5 +1,5 @@
-const BronzeTrophy = () => {
-    return <svg width="208" height="186" viewBox="0 0 208 186" fill="none" xmlns="http://www.w3.org/2000/svg"
+const BronzeTrophy = ({className}:{className:string}) => {
+    return <svg className={className} width="208" height="186" viewBox="0 0 208 186" fill="none" xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink">
         <rect x="0.712585" y="0.239502" width="206.985" height="185.732" fill="url(#pattern0_79_1643)"/>
         <defs>
