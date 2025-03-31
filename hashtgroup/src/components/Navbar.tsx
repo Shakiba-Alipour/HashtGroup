@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
                     }
                 });
             },
-            { threshold: 0.5 }
+            { threshold: 0.3 }
         );
 
         menuItems.forEach(({ path }) => {
