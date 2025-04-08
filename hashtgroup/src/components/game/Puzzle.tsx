@@ -71,12 +71,12 @@ const Puzzle: React.FC = () => {
 
     return (
         <div className="flex justify-center items-center">
-            <div className="grid grid-cols-3 grid-rows-4 mb-20 justify-self-center">
+            <div className="max-w-screen-lg grid grid-cols-3 grid-rows-4 gap-0 mb-20 justify-self-center">
                 {gameState.pieces.map(({id, name, Component}) => (
                     <div
                         key={id}
                         onClick={() => handlePieceClick({id, name})}
-                        className="w-20 h-20 sm:w-40 sm:h-40 md:w-50 md:h-50 lg:w-60 lg:h-60 cursor-pointer flex justify-center items-center self-center justify-self-center"
+                        className="aspect-square w-5/6 h-full cursor-pointer flex justify-center items-center self-center justify-self-center"
                     >
                         <Component/>
                     </div>
